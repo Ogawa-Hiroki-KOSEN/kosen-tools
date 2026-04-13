@@ -18,6 +18,22 @@ $(document).ready(function () {
         alert("時間割データの読み込みに失敗しました。JSONファイルやサーバー環境を確認してください。");
     });
 
+    // --- モーダルの開閉処理 ---
+    $('#menu-btn').on('click', function () {
+        $('#settings-modal').fadeIn(200);
+    });
+
+    $('#close-modal').on('click', function () {
+        $('#settings-modal').fadeOut(200);
+    });
+
+    // モーダルの外側をクリックしたら閉じる
+    $(window).on('click', function (event) {
+        if ($(event.target).is('#settings-modal')) {
+            $('#settings-modal').fadeOut(200);
+        }
+    });
+
     // --- 設定の保存処理 ---
     $('#save-settings').on('click', function () {
         const mainClass = $('#main-class').val();
@@ -43,11 +59,11 @@ $(document).ready(function () {
         };
         localStorage.setItem('kosenTimetableSettings', JSON.stringify(settings));
 
-        // 保存完了メッセージ
-        $('#save-msg').fadeIn().delay(1500).fadeOut();
-
-        // 画面を更新
+        // 画面を更新してモーダルを閉じる
         renderTimetable(settings);
+        $('#save-msg').fadeIn().delay(800).fadeOut(function () {
+            $('#settings-modal').fadeOut(200);
+        });
     });
 
     // --- タブ切り替え処理 (イベント委譲) ---

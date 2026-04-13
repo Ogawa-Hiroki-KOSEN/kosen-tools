@@ -1,32 +1,30 @@
 {
-  "1-A": {
-    "mon": [
-      { "name": "数学", "room": "一般棟3F 301", "items": "教科書、ノート、関数電卓" },
-      { "name": "英語", "room": "一般棟2F LL教室", "items": "単語帳、ワークブック" },
-      { "name": "物理", "room": "物理実験室", "items": "関数電卓、実験ノート、白衣" },
-      { "name": "体育", "room": "第1体育館", "items": "体操服、体育館シューズ" }
-    ],
-    "tue": [
-      { "name": "化学", "room": "化学実験室", "items": "保護メガネ、実験ノート" },
-      { "name": "プログラミング", "room": "情報演習室1", "items": "USBメモリ" },
-      "国語", "数学"
-    ],
-    "wed": ["歴史", "英語", "専門A", "専門B"],
-    "thu": ["物理", "化学", "体育", "LHR"],
-    "fri": ["プログラミング", "数学", "英語", "専門A"]
+  "ｼｯｼｮ": {
+    "mon": [{"name":"自習","room":"図書館","items":""},{"name":"基礎数学","room":"HR","items":"教科書,問題集"},{"name":"化学","room":"HR","items":"教科書,資料集"},{"name":"","room":"","items":""}],
+    "tue": [{"name":"自習","room":"図書館","items":""},{"name":"自習","room":"図書館","items":""},{"name":"基礎数学","room":"HR","items":"教科書,問題集"},{"name":"自習","room":"図書館","items":""}],
+    "wed": [{"name":"基礎数学","room":"HR","items":"教科書,問題集"},{"name":"物理","room":"HR/物理実験室","items":"教科書,実験テキスト,関数電卓"},{"name":"自習","room":"図書館","items":""},{"name":"自習","room":"図書館","items":""}],
+    "thu": [{"name":"体育","room":"体育施設","items":"館履き"},{"name":"自習","room":"図書館","items":""},[{"name":"LHR","room":"HR","items":""},{"name":"","room":"","items":""}]],
+    "fri": [{"name":"情報基礎","room":"第一演習室(5102)","items":"PC, USBメモリ, 教科書"},{"name":"ものづくり基礎工学","room":"各実習室","items":"教科書, 作業着, 帽子, 安全靴, 保護メガネ"},{"name":"ものづくり基礎工学","room":"","items":""},[{"name":"ものづくり基礎工学","room":"","items":""},{"name":"","room":"","items":""}]]
   },
-  "2-A": {
-    "mon": ["専門C", "数学", "英語", "物理"],
-    "tue": ["プログラミング", "専門D", "化学", "数学"],
-    "wed": ["英語", "歴史", "体育", "専門C"],
-    "thu": ["数学", "物理", "専門D", "LHR"],
-    "fri": ["専門C", "プログラミング", "数学", "英語"]
+  "2-E": {
+    "mon": [{"name":"電気回路","room":"HR","items":""},{"name":"ディジタル回路","room":"HR","items":""},{"name":"OC","room":"自学自習室-4105","items":""},[{"name":"LHR","room":"HR","items":""},{"name":"","room":"","items":""}]],
+    "tue": [{"name":"物理","room":"HR","items":""},{"name":"微分積分","room":"HR","items":""},{"name":"国語総合3","room":"HR","items":""},{"name":"社会と文化から見る歴史1","room":"5201","items":""}],
+    "wed": [{"name":"Reading","room":"HR","items":""},{"name":"体育","room":"体育施設","items":""},{"name":"微分積分1","room":"HR","items":""},{"name":"線形代数1","room":"HR","items":""}],
+    "thu": [{"name":"電気回路","room":"HR","items":""},{"name":"電気電子実験","room":"Eエネ環境室, E電デパ実験室","items":""},{"name":"電気電子実験","room":"Eエネ環境室, E電デパ実験室","items":""},{"name":"","room":"","items":""}],
+    "fri": [{"name":"G&W","room":"HR","items":""},{"name":"化学","room":"HR","items":""},{"name":"電気・電子工学展望","room":"HR","items":""},{"name":"","room":"","items":""}]
   },
-  "2-B": {
-    "mon": ["英語", "専門C", "物理", "数学"],
-    "tue": ["専門D", "プログラミング", "数学", "化学"],
-    "wed": ["体育", "英語", "専門C", "歴史"],
-    "thu": ["物理", "数学", "LHR", "専門D"],
-    "fri": ["プログラミング", "専門C", "英語", "数学"]
+  "2-D": {
+    "mon": [{"name":"電気回路演習1","room":"D特別室-3411","items":""},{"name":"ディジタル回路","room":"D特別室-3411","items":""},{"name":"物理","room":"HR","items":""},[{"name":"LHR","room":"HR","items":""},{"name":"","room":"","items":""}]],
+    "tue": [{"name":"電気/電子工学展望","room":"HR","items":""},{"name":"線形代数","room":"HR","items":""},{"name":"Reading3","room":"HR","items":""},{"name":"歴史","room":"5201","items":""}],
+    "wed": [{"name":"電気回路","room":"HR","items":""},{"name":"電気電子実験","room":"D実験室-3403, D回路系実験室-3401, D特別室-3411","items":""},{"name":"電気電子実験","room":"","items":""},{"name":"","room":"","items":""}],
+    "thu": [{"name":"微分積分","room":"HR","items":""},{"name":"国語","room":"HR","items":""},{"name":"体育","room":"体育施設","items":""},{"name":"","room":"","items":""}],
+    "fri": [{"name":"化学3","room":"HR","items":""},{"name":"G&W","room":"HR","items":""},{"name":"OC","room":"自学自習室-4105","items":""},{"name":"微分積分","room":"HR","items":""}]
+  },
+  "2-C": {
+    "mon": [{"name":"物質工学展望","room":"HR","items":""},{"name":"Reading","room":"HR","items":""},[{"name":"分析化学","room":"HR","items":""},{"name":"","room":"","items":""}],[{"name":"LHR","room":"HR","items":""},{"name":"","room":"","items":""}]],
+    "tue": [{"name":"情報処理","room":"第二演習室-4106","items":""},{"name":"物理","room":"HR","items":""},{"name":"線形代数","room":"HR","items":""},{"name":"G&W3","room":"HR","items":""}],
+    "wed": [{"name":"物質実験","room":"HR","items":""},{"name":"物質実験","room":"","items":""},{"name":"微分積分","room":"HR","items":""},{"name":"体育","room":"体育施設","items":""}],
+    "thu": [{"name":"化学","room":"HR","items":""},{"name":"歴史","room":"5201","items":""},{"name":"微分積分","room":"HR","items":""},{"name":"","room":"","items":""}],
+    "fri": [[{"name":"基礎生物","room":"HR","items":""},{"name":"","room":"","items":""}],{"name":"OC","room":"LL-4205","items":""},{"name":"国語","room":"HR","items":""},{"name":"","room":"","items":""}]
   }
 }

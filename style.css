@@ -361,3 +361,7 @@ td {
 .detail-item:last-child {
     margin-bottom: 0;
 }
+/* rowpanによる高さ調整時のスタイル調整 */
+td[rowspan] {
+    vertical-align: middle;
+}

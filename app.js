@@ -3,12 +3,16 @@ $(document).ready(function () {
     let currentSettings = null; // 現在の設定情報を保持
     let currentMode = 'today'; // 'today' or 'weekly'
 
-    // 時間割の時限の設定（一般的な高専の90分授業・休憩時間例）
+    // 時間割の時限の設定（45分授業・休憩時間例・8分割）
     const periods = [
-        { id: 1, start: '08:50', end: '10:20' },
-        { id: 2, start: '10:30', end: '12:00' },
-        { id: 3, start: '12:50', end: '14:20' },
-        { id: 4, start: '14:30', end: '16:00' }
+        { id: 1, start: '08:50', end: '09:35' },
+        { id: 2, start: '09:35', end: '10:20' },
+        { id: 3, start: '10:30', end: '11:15' },
+        { id: 4, start: '11:15', end: '12:00' },
+        { id: 5, start: '12:50', end: '13:35' },
+        { id: 6, start: '13:35', end: '14:20' },
+        { id: 7, start: '14:30', end: '15:15' },
+        { id: 8, start: '15:15', end: '16:00' }
     ];
 
     // 1. JSONデータの読み込み
@@ -130,7 +134,7 @@ $(document).ready(function () {
     function createSubjectCell(subjectData) {
         if (!subjectData) return '---';
 
-        // 過去の互換性のために、単なる文字列（"数学"など）の場合はそのまま返す
+        // 単なる文字列（"数学"など）の場合はそのまま返す
         if (typeof subjectData === 'string') {
             return `<div class="subject-name">${subjectData}</div>`;
         }
@@ -149,7 +153,7 @@ $(document).ready(function () {
         return `
             <div class="subject-name">${name}</div>
             <details class="subject-details">
-                <summary>詳細・持ち物</summary>
+                <summary>詳細・持物</summary>
                 <div class="details-content">
                     ${room}
                     ${items}
@@ -229,8 +233,26 @@ $(document).ready(function () {
             // 各クラスの科目を並べる
             allClassesToView.forEach(function (cls) {
                 const data = timetableData[cls];
-                const subjectData = (data && data[todayStr] && data[todayStr][i]) ? data[todayStr][i] : null;
-                $tr.append($('<td>').html(createSubjectCell(subjectData)));
+                const item = (data && data[todayStr]) ? data[todayStr][Math.floor(i / 2)] : null;
+                const isHalf = Array.isArray(item);
+
+                if (i % 2 === 0) {
+                    // 偶数行（1, 3, 5, 7限目）
+                    const subjectData = isHalf ? item[0] : item;
+                    const $td = $('<td>').html(createSubjectCell(subjectData));
+                    if (!isHalf) {
+                        $td.attr('rowspan', 2);
+                    }
+                    $tr.append($td);
+                } else {
+                    // 奇数行（2, 4, 6, 8限目）
+                    if (isHalf) {
+                        const subjectData = item[1];
+                        const $td = $('<td>').html(createSubjectCell(subjectData));
+                        $tr.append($td);
+                    }
+                    // 全コマ（90分）の場合は上の行で rowspan=2 されているので td を追加しない
+                }
             });
 
             $tbody.append($tr);
@@ -273,8 +295,26 @@ $(document).ready(function () {
             const $tr = $('<tr>');
             $tr.append($('<th>').text((i + 1) + '限'));
             days.forEach(function (day) {
-                const subjectData = data[day] && data[day][i] ? data[day][i] : null;
-                $tr.append($('<td>').html(createSubjectCell(subjectData)));
+                const item = (data[day]) ? data[day][Math.floor(i / 2)] : null;
+                const isHalf = Array.isArray(item);
+
+                if (i % 2 === 0) {
+                    // 偶数行（1, 3, 5, 7限目）
+                    const subjectData = isHalf ? item[0] : item;
+                    const $td = $('<td>').html(createSubjectCell(subjectData));
+                    if (!isHalf) {
+                        $td.attr('rowspan', 2);
+                    }
+                    $tr.append($td);
+                } else {
+                    // 奇数行（2, 4, 6, 8限目）
+                    if (isHalf) {
+                        const subjectData = item[1];
+                        const $td = $('<td>').html(createSubjectCell(subjectData));
+                        $tr.append($td);
+                    }
+                    // 全コマ（90分）の場合は上の行で rowspan=2 されているので td を追加しない
+                }
             });
             $tbody.append($tr);
         }

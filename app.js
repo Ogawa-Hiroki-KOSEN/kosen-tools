@@ -2,7 +2,7 @@ $(document).ready(function () {
     let timetableData = {}; // JSONから読み込んだデータを保持
 
     // 1. JSONデータの読み込み
-    $.getJSON('data/timetable.json', function (data) {
+    $.getJSON('timetable.json', function (data) {
         timetableData = data;
         const classes = Object.keys(timetableData);
 

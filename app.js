@@ -153,7 +153,7 @@ $(document).ready(function () {
         return `
             <div class="subject-name">${name}</div>
             <details class="subject-details">
-                <summary>詳細・持物</summary>
+                <summary>詳細/持物</summary>
                 <div class="details-content">
                     ${room}
                     ${items}

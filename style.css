@@ -365,3 +365,28 @@ td {
 td[rowspan] {
     vertical-align: middle;
 }
+
+/* モバイル版で「詳細・持物」が改行されないようにする */
+.subject-details summary {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    /* アイコンとの間隔を確保して溢れないようにする */
+    gap: 0.2rem;
+}
+
+@media (max-width: 600px) {
+    .subject-details summary {
+        font-size: 0.65rem;
+        padding: 0.3rem 0.2rem;
+        justify-content: center;
+    }
+    
+    .subject-details summary::after {
+        display: none; /* スマホでは矢印を消して横幅を節約 */
+    }
+    
+    .subject-name {
+        font-size: 0.8rem;
+    }
+}

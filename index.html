@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>高専スケジュール&ツールズ</title>
+    <link rel="stylesheet" href="css/style.css">
+    <!-- jQueryの読み込み -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+
+<body>
+    <header>
+        <h1>高専スケジュール</h1>
+    </header>
+
+    <main>
+        <!-- クラス設定セクション -->
+        <section id="settings" class="card">
+            <h2>クラス設定</h2>
+            <div class="setting-group">
+                <label for="main-class">マイクラス (メイン):</label>
+                <select id="main-class">
+                    <option value="">選択してください</option>
+                </select>
+            </div>
+
+            <div class="setting-group">
+                <label>サブクラス (最大3つ):</label>
+                <div id="sub-classes-container">
+                    <select class="sub-class">
+                        <option value="">選択してください</option>
+                    </select>
+                    <select class="sub-class">
+                        <option value="">選択してください</option>
+                    </select>
+                    <select class="sub-class">
+                        <option value="">選択してください</option>
+                    </select>
+                </div>
+            </div>
+            <button id="save-settings" class="btn">設定を保存</button>
+            <span id="save-msg" style="display:none; color: green; margin-left: 10px;">保存しました！</span>
+        </section>
+
+        <!-- 時間割表示セクション -->
+        <section id="timetable-section" class="card" style="display:none;">
+            <!-- タブ -->
+            <ul id="class-tabs" class="tabs">
+                <!-- ここにJSでタブが生成されます -->
+            </ul>
+
+            <!-- 時間割表 -->
+            <div class="table-container">
+                <table id="timetable">
+                    <thead>
+                        <tr>
+                            <th>時限</th>
+                            <th>月</th>
+                            <th>火</th>
+                            <th>水</th>
+                            <th>木</th>
+                            <th>金</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- ここにJSで時間割が生成されます -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- クイックリンク -->
+        <section class="card">
+            <h2>便利リンク一覧</h2>
+            <ul class="quick-links">
+                <li><a href="#" target="_blank">Webシラバス</a></li>
+                <li><a href="#" target="_blank">教務システム(成績)</a></li>
+                <li><a href="#" target="_blank">LMS (Moodle/Teams)</a></li>
+            </ul>
+        </section>
+    </main>
+
+    <!-- メインのプログラム -->
+    <script src="js/app.js"></script>
+</body>
+
+</html>

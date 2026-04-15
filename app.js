@@ -1,9 +1,7 @@
 $(document).ready(function () {
-    let timetableData = {}; // JSONから読み込んだデータを保持
-    let currentSettings = null; // 現在の設定情報を保持
-    let currentMode = 'today'; // 'today' or 'weekly'
-
-    // 時間割の時限の設定（45分授業・休憩時間例・8分割）
+    let timetableData = {};
+    let currentSettings = null;
+    let currentMode = 'today';
     const periods = [
         { id: 1, start: '08:50', end: '09:35' },
         { id: 2, start: '09:35', end: '10:20' },
@@ -14,25 +12,17 @@ $(document).ready(function () {
         { id: 7, start: '14:30', end: '15:15' },
         { id: 8, start: '15:15', end: '16:00' }
     ];
-
-    // 1. JSONデータの読み込み
     $.getJSON('timetable.json', function (data) {
         timetableData = data;
         const classes = Object.keys(timetableData);
-
-        // selectの選択肢を生成
         classes.forEach(function (cls) {
             $('#main-class').append($('<option>').val(cls).text(cls));
             $('.sub-class').append($('<option>').val(cls).text(cls));
         });
-
-        // 2. 保存されている設定の読み込み
         loadSettings();
     }).fail(function () {
         alert("時間割データの読み込みに失敗しました。JSONファイルやサーバー環境を確認してください。");
     });
-
-    // --- モーダルの開閉処理 ---
     $('#menu-btn').on('click', function () {
         $('#settings-modal').fadeIn(200);
     });
@@ -46,8 +36,6 @@ $(document).ready(function () {
             $('#settings-modal').fadeOut(200);
         }
     });
-
-    // --- 設定の保存処理 ---
     $('#save-settings').on('click', function () {
         const mainClass = $('#main-class').val();
 
@@ -72,8 +60,6 @@ $(document).ready(function () {
             $('#settings-modal').fadeOut(200);
         });
     });
-
-    // --- 表示モード切り替え処理 ---
     $('#btn-today-view').on('click', function () {
         if (currentMode !== 'today') {
             currentMode = 'today';
@@ -91,8 +77,6 @@ $(document).ready(function () {
             applyCurrentMode();
         }
     });
-
-    // --- タブ切り替え処理 (週間表示用) ---
     $('#class-tabs').on('click', 'li', function () {
         $('#class-tabs li').removeClass('active');
         $(this).addClass('active');
@@ -129,27 +113,17 @@ $(document).ready(function () {
             renderWeeklyView(currentSettings);
         }
     }
-
-    // --- 時間割セルの作成ヘルパー (教室情報などのFold対応) ---
     function createSubjectCell(subjectData) {
         if (!subjectData) return '---';
-
-        // 単なる文字列（"数学"など）の場合はそのまま返す
         if (typeof subjectData === 'string') {
             return `<div class="subject-name">${subjectData}</div>`;
         }
-
-        // オブジェクトとして定義されている場合
         const name = subjectData.name || '---';
         const room = subjectData.room ? `<div class="detail-item">📍 ${subjectData.room}</div>` : '';
         const items = subjectData.items ? `<div class="detail-item">🎒 ${subjectData.items}</div>` : '';
-
-        // 持ち物や場所の設定がない場合は名前だけ返す
         if (!room && !items) {
             return `<div class="subject-name">${name}</div>`;
         }
-
-        // Fold（detailsタグ）機能をつけて返す
         return `
             <div class="subject-name">${name}</div>
             <details class="subject-details">
@@ -161,8 +135,6 @@ $(document).ready(function () {
             </details>
         `;
     }
-
-    // --- 現在受けている授業の時限を判定するヘルパー ---
     function getCurrentStatus() {
         const now = new Date();
         const h = now.getHours();
@@ -171,15 +143,12 @@ $(document).ready(function () {
 
         for (let i = 0; i < periods.length; i++) {
             const p = periods[i];
-            // もし授業時間内なら
             if (timeStr >= p.start && timeStr <= p.end) {
-                return i; // 0-indexed (4コマなら0〜3)
+                return i;
             }
         }
-        return -1; // 授業時間外
+        return -1;
     }
-
-    // --- 本日の時間割描画 ---
     function renderTodayView(settings) {
         $('#timetable-section').hide();
         $('#today-section').show();
@@ -191,8 +160,6 @@ $(document).ready(function () {
         const todayJa = dayMapJa[dInfo];
 
         $('#today-title').text('本日の時間割 (' + todayJa + '曜日)');
-
-        // 休日判定
         if (todayStr === 'sun' || todayStr === 'sat') {
             $('.table-container').hide();
             $('#today-no-class-msg').show();
@@ -203,41 +170,30 @@ $(document).ready(function () {
         }
 
         const allClassesToView = [settings.main].concat(settings.subs);
-
-        // ヘッダー作成
         const $headerRow = $('#today-header-row');
         $headerRow.empty();
         $headerRow.append($('<th>').text('時限'));
         allClassesToView.forEach(function (cls, idx) {
             $headerRow.append($('<th>').text(cls + (idx === 0 ? '(メイン)' : '')));
         });
-
-        // ボディ作成
         const $tbody = $('#today-body');
         $tbody.empty();
         const currentPeriodIdx = getCurrentStatus();
 
         for (let i = 0; i < periods.length; i++) {
             const $tr = $('<tr>');
-
-            // 現在の授業時間をハイライト
             if (i === currentPeriodIdx) {
                 $tr.addClass('highlight-row');
             }
-
-            // 時限セル + 時間を小さく表示
             const periodText = (i + 1) + '限\n<span style="font-size:0.7em; color:#777; display:block;">'
                 + periods[i].start + '-' + periods[i].end + '</span>';
             $tr.append($('<th>').html(periodText));
-
-            // 各クラスの科目を並べる
             allClassesToView.forEach(function (cls) {
                 const data = timetableData[cls];
                 const item = (data && data[todayStr]) ? data[todayStr][Math.floor(i / 2)] : null;
                 const isHalf = Array.isArray(item);
 
                 if (i % 2 === 0) {
-                    // 偶数行（1, 3, 5, 7限目）
                     const subjectData = isHalf ? item[0] : item;
                     const $td = $('<td>').html(createSubjectCell(subjectData));
                     if (!isHalf) {
@@ -245,21 +201,17 @@ $(document).ready(function () {
                     }
                     $tr.append($td);
                 } else {
-                    // 奇数行（2, 4, 6, 8限目）
                     if (isHalf) {
                         const subjectData = item[1];
                         const $td = $('<td>').html(createSubjectCell(subjectData));
                         $tr.append($td);
                     }
-                    // 全コマ（90分）の場合は上の行で rowspan=2 されているので td を追加しない
                 }
             });
 
             $tbody.append($tr);
         }
     }
-
-    // --- 週間一覧描画 ---
     function renderWeeklyView(settings) {
         $('#today-section').hide();
         $('#timetable-section').show();
@@ -299,7 +251,6 @@ $(document).ready(function () {
                 const isHalf = Array.isArray(item);
 
                 if (i % 2 === 0) {
-                    // 偶数行（1, 3, 5, 7限目）
                     const subjectData = isHalf ? item[0] : item;
                     const $td = $('<td>').html(createSubjectCell(subjectData));
                     if (!isHalf) {
@@ -307,13 +258,11 @@ $(document).ready(function () {
                     }
                     $tr.append($td);
                 } else {
-                    // 奇数行（2, 4, 6, 8限目）
                     if (isHalf) {
                         const subjectData = item[1];
                         const $td = $('<td>').html(createSubjectCell(subjectData));
                         $tr.append($td);
                     }
-                    // 全コマ（90分）の場合は上の行で rowspan=2 されているので td を追加しない
                 }
             });
             $tbody.append($tr);

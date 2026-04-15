@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>東京高専時間割('26前期)</title>
     <link rel="stylesheet" href="style.css?v=3">
-    <!-- jQueryの読み込み -->
+    
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 </head>
 
@@ -16,7 +16,7 @@
         <button id="menu-btn" class="hamburger-btn">☰</button>
     </header>
 
-    <!-- クラス設定モーダル -->
+    
     <div id="settings-modal" class="modal">
         <div class="modal-content card">
             <span id="close-modal" class="close-btn">&times;</span>
@@ -48,24 +48,24 @@
     </div>
 
     <main>
-        <!-- 表示モード切り替え -->
+        
         <div class="view-toggle" id="view-toggle" style="display:none;">
             <button id="btn-today-view" class="toggle-btn active">本日の時間割</button>
             <button id="btn-weekly-view" class="toggle-btn">週間一覧表示</button>
         </div>
 
-        <!-- 本日の時間割セクション -->
+        
         <section id="today-section" class="card" style="display:none;">
             <h2 id="today-title">〇曜日の時間割</h2>
             <div class="table-container">
                 <table id="today-timetable">
                     <thead>
                         <tr id="today-header-row">
-                            <!-- クラス名が入る -->
+                            
                         </tr>
                     </thead>
                     <tbody id="today-body">
-                        <!-- ここに時間割が入る -->
+                        
                     </tbody>
                 </table>
             </div>
@@ -74,14 +74,14 @@
             </p>
         </section>
 
-        <!-- 時間割表示セクション (週) -->
+        
         <section id="timetable-section" class="card" style="display:none;">
-            <!-- タブ -->
+            
             <ul id="class-tabs" class="tabs">
-                <!-- ここにJSでタブが生成されます -->
+                
             </ul>
 
-            <!-- 時間割表 -->
+            
             <div class="table-container">
                 <table id="timetable">
                     <thead>
@@ -95,13 +95,13 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <!-- ここにJSで時間割が生成されます -->
+                        
                     </tbody>
                 </table>
             </div>
         </section>
 
-        <!-- クイックリンク -->
+        
         <section class="card">
             <h2>便利リンク一覧</h2>
             <ul class="quick-links">
@@ -114,7 +114,7 @@
         </section>
     </main>
 
-    <!-- メインのプログラム -->
+    
     <script src="app.js?v=2"></script>
 </body>
 

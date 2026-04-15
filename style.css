@@ -3,7 +3,6 @@
     margin: 0;
     padding: 0;
 }
-
 body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     background-color: #f7f9fc;
@@ -11,8 +10,6 @@ body {
     line-height: 1.6;
     padding-bottom: 40px;
 }
-
-/* ヘッダーとハンバーガーメニューの調整 */
 header {
     background-color: #0056b3;
     color: white;
@@ -21,12 +18,10 @@ header {
     justify-content: space-between;
     align-items: center;
 }
-
 header h1 {
     font-size: 1.5rem;
     margin: 0;
 }
-
 .hamburger-btn {
     background-color: transparent;
     border: 2px solid white;
@@ -38,13 +33,11 @@ header h1 {
     display: block !important;
     z-index: 100;
 }
-
 main {
     max-width: 1200px;
     margin: 0 auto;
     padding: 1rem;
 }
-
 .card {
     background-color: white;
     border-radius: 8px;
@@ -52,18 +45,15 @@ main {
     padding: 1rem;
     margin-bottom: 1rem;
 }
-
 h2 {
     font-size: 1.25rem;
     margin-bottom: 1rem;
     border-bottom: 2px solid #0056b3;
     display: inline-block;
 }
-
 .setting-group {
     margin-bottom: 1rem;
 }
-
 select {
     width: 100%;
     padding: 0.5rem;
@@ -72,11 +62,9 @@ select {
     border-radius: 4px;
     font-size: 1rem;
 }
-
 .sub-class {
     margin-bottom: 0.5rem;
 }
-
 .btn {
     background-color: #0056b3;
     color: white;
@@ -86,11 +74,9 @@ select {
     cursor: pointer;
     font-size: 1rem;
 }
-
 .btn:hover {
     background-color: #004494;
 }
-
 .tabs {
     display: flex;
     list-style: none;
@@ -98,7 +84,6 @@ select {
     border-bottom: 2px solid #ddd;
     overflow-x: auto;
 }
-
 .tabs li {
     padding: 0.5rem 1rem;
     cursor: pointer;
@@ -106,17 +91,14 @@ select {
     margin-right: 2px;
     border-radius: 4px 4px 0 0;
 }
-
 .tabs li.active {
     background-color: #0056b3;
     color: white;
     font-weight: bold;
 }
-
 .table-container {
     overflow-x: auto;
 }
-
 table {
     width: 100%;
     border-collapse: collapse;
@@ -124,7 +106,6 @@ table {
     table-layout: fixed;
     word-break: break-word;
 }
-
 th,
 td {
     border: 1px solid #ccc;
@@ -132,31 +113,24 @@ td {
     text-align: center;
     font-size: 0.9rem;
 }
-
 th {
     background-color: #f0f0f0;
     width: auto;
 }
-
-/* 時限列（1番左の列）の幅を固定 */
 th:first-child,
 td:first-child {
     width: 80px;
 }
-
 td {
     height: 50px;
     vertical-align: middle;
 }
-
 .quick-links {
     list-style: none;
 }
-
 .quick-links li {
     margin-bottom: 0.5rem;
 }
-
 .quick-links a {
     text-decoration: none;
     color: #0056b3;
@@ -166,12 +140,9 @@ td {
     border-radius: 4px;
     background-color: #fafafa;
 }
-
 .quick-links a:hover {
     background-color: #e6f0fa;
 }
-
-/* モーダルのスタイル */
 .modal {
     display: none;
     position: fixed;
@@ -182,7 +153,6 @@ td {
     height: 100%;
     background-color: rgba(0, 0, 0, 0.6);
 }
-
 .modal-content {
     position: relative;
     margin: 15% auto;
@@ -190,7 +160,6 @@ td {
     max-width: 500px;
     background: white;
 }
-
 .close-btn {
     position: absolute;
     right: 15px;
@@ -200,12 +169,9 @@ td {
     font-weight: bold;
     cursor: pointer;
 }
-
 .close-btn:hover {
     color: #333;
 }
-
-/* 切り替えトグル */
 .view-toggle {
     display: flex;
     margin-bottom: 1.5rem;
@@ -213,7 +179,6 @@ td {
     overflow: hidden;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
-
 .toggle-btn {
     flex: 1;
     padding: 0.8rem;
@@ -225,51 +190,39 @@ td {
     color: #555;
     transition: background-color 0.2s, color 0.2s;
 }
-
 .toggle-btn.active {
     background-color: #0056b3;
     color: white;
 }
-
-/* 今現在の授業のハイライト */
 .highlight-row {
     background-color: #fffae6 !important;
     font-weight: bold;
 }
-
 .highlight-row th {
     background-color: #ffe8a1 !important;
     color: #d35400;
 }
-
-/* スマホ表示向けの調整（画面幅600px以下の時） */
 @media screen and (max-width: 600px) {
     main {
         padding: 0.5rem;
     }
-
     .card {
         padding: 0.8rem;
     }
-
     table {
         min-width: 100%;
         font-size: 0.85rem;
     }
-
     th:first-child,
     td:first-child {
         width: 60px;
         font-size: 0.8em;
     }
-
     th,
     td {
         padding: 0.2rem;
     }
 }
-
-/* 詳細（Fold）のスタイル */
 .subject-name {
     font-weight: 700;
     font-size: 0.95rem;
@@ -277,7 +230,6 @@ td {
     display: block;
     margin-bottom: 0.3rem;
 }
-
 .subject-details {
     margin-top: 0.4rem;
     font-size: 0.8rem;
@@ -287,7 +239,6 @@ td {
     border: 1px solid #e9ecef;
     overflow: hidden;
 }
-
 .subject-details summary {
     cursor: pointer;
     color: #495057;
@@ -297,58 +248,46 @@ td {
     outline: none;
     user-select: none;
     list-style: none;
-    /* デフォルトの矢印を消す */
     display: flex;
     align-items: center;
     justify-content: space-between;
     background-color: #f1f3f5;
     transition: background-color 0.2s ease;
 }
-
 .subject-details summary::-webkit-details-marker {
     display: none;
-    /* Safari用のデフォルト矢印消し */
 }
-
 .subject-details summary:hover {
     background-color: #e2e6ea;
     text-decoration: none;
 }
-
-/* カスタムの矢印（開閉インジケータ） */
 .subject-details summary::after {
     content: "▼";
     font-size: 0.6rem;
     color: #adb5bd;
     transition: transform 0.3s ease;
 }
-
 .subject-details[open] summary::after {
     transform: rotate(180deg);
 }
-
 .subject-details[open] summary {
     border-bottom: 1px solid #e9ecef;
 }
-
 .details-content {
     background: #ffffff;
     padding: 0.5rem 0.6rem;
     animation: fadeIn 0.2s ease-out;
 }
-
 @keyframes fadeIn {
     from {
         opacity: 0;
         transform: translateY(-3px);
     }
-
     to {
         opacity: 1;
         transform: translateY(0);
     }
 }
-
 .detail-item {
     margin-bottom: 0.3rem;
     line-height: 1.4;
@@ -357,35 +296,27 @@ td {
     align-items: flex-start;
     gap: 0.2rem;
 }
-
 .detail-item:last-child {
     margin-bottom: 0;
 }
-/* rowpanによる高さ調整時のスタイル調整 */
 td[rowspan] {
     vertical-align: middle;
 }
-
-/* モバイル版で「詳細・持物」が改行されないようにする */
 .subject-details summary {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    /* アイコンとの間隔を確保して溢れないようにする */
     gap: 0.2rem;
 }
-
 @media (max-width: 600px) {
     .subject-details summary {
         font-size: 0.65rem;
         padding: 0.3rem 0.2rem;
         justify-content: center;
     }
-    
     .subject-details summary::after {
-        display: none; /* スマホでは矢印を消して横幅を節約 */
+        display: none; 
     }
-    
     .subject-name {
         font-size: 0.8rem;
     }

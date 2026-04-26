@@ -161,11 +161,11 @@ $(document).ready(function () {
 
         $('#today-title').text('本日の時間割 (' + todayJa + '曜日)');
         if (todayStr === 'sun' || todayStr === 'sat') {
-            $('.table-container').hide();
+            $('#today-section .table-container').hide();
             $('#today-no-class-msg').show();
             return;
         } else {
-            $('.table-container').show();
+            $('#today-section .table-container').show();
             $('#today-no-class-msg').hide();
         }
 
